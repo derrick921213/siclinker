@@ -46,8 +46,8 @@ fn main() -> std::io::Result<()> {
 
     match i32::from_str_radix(address, 16) {
         Ok(start_address) => {
-            println!("Program Name: {}", args[0]);
-            println!("Starting Address: 0x{:X}", start_address);
+            // println!("Program Name: {}", args[0]);
+            // println!("Starting Address: 0x{:X}", start_address);
             let mut data: Vec<Data> = Vec::new();
             let mut address_check: i32 = 0;
             let mut length_check: i32 = 0;
