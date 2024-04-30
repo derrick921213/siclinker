@@ -37,6 +37,10 @@ Data *add2array(Data *data)
     array[size++] = *data;
     return array;
 }
+void freeArray()
+{
+    free(array);
+}
 
 FILE *openFile(char *filename, char *mode)
 {
@@ -53,26 +57,6 @@ void closeFile(FILE *file)
     fclose(file);
 }
 
-// int processDLine(char *line)
-// {
-//     char *ptr = line + 1;
-//     while (*ptr)
-//     {
-//         char name[10];
-//         int address;
-//         if (sscanf(ptr, "%[^0-9]%06x", name, &address) != 2)
-//             break;
-//         printf("%s %06x\n", name, address);
-//         Data *data = new ("", name, address, 0);
-//         if (add2array(data) == NULL)
-//         {
-//             fprintf(stderr, "Error: Could not add data to array\n");
-//             return -1;
-//         }
-//         ptr += strlen(name) + 6;
-//     }
-//     return 0;
-// }
 int main(int argc, char *argv[])
 {
     if (argc < 4)
@@ -150,6 +134,6 @@ int main(int argc, char *argv[])
         }
         printf("%10s  %6s %06X  %6s\n", data.cs, data.name, data.address, length);
     }
-
+    freeArray();
     return 0;
 }
